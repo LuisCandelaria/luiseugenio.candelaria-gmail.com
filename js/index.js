@@ -1,9 +1,10 @@
 const API_KEY = "";
 var page = 10;
 var data2;
+let searchTerm;
 
 function fetchVideos( searchTerm ){
-    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&key=${API_KEY}&order=relevance&maxResults=10`;
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&key=${API_KEY}&maxResults=10`;
     let settings = {
         method : 'GET'
     };
@@ -38,7 +39,7 @@ function displayResults( data ){
             </div>
         `;
     }
-    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&key=${API_KEY}&maxResults=10&order=relevance&pageToken=${data.nextPageToken}`;
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=${API_KEY}&q=${searchTerm}&maxResults=10&pageToken=${data.nextPageToken}`;
     let settings = {
         method : 'GET'
     };
@@ -78,7 +79,7 @@ function displayNxtPage(){
             </div>
         `;
     }
-    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchTerm}&type=video&key=${API_KEY}&maxResults=10&order=relevance&pageToken=${data2.nextPageToken}`;
+    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=${API_KEY}&q=${searchTerm}&maxResults=10&pageToken=${data2.nextPageToken}`;
     let settings = {
         method : 'GET'
     };
@@ -106,6 +107,6 @@ function displayNxtPage(){
 
 function watchForm(){
     event.preventDefault();
-    let searchTerm = document.querySelector('#searchTerm').value;
+    searchTerm = document.querySelector('#searchTerm').value;
     fetchVideos(searchTerm);
 }
