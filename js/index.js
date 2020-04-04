@@ -1,4 +1,4 @@
-const API_KEY = "";
+const API_KEY = "AIzaSyDhoQPvet_kqLp6wC2GM_f0MnaFFEEA8IA";
 var page = 10;
 var data2;
 
